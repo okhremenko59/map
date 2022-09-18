@@ -1,3 +1,5 @@
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,25 +12,25 @@ public class Main {
             "proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
     public static void main(String[] args) {
-        int all = text.length();
         Map<Character, Integer> map = new HashMap<>();
-        int count = 0;
-        int summ = 0;
+        int count;
         for (int i = 0; i < text.length(); i++) {
             if (map.containsKey(text.charAt(i))) {
                 count = map.get(text.charAt(i));
                 count++;
                 map.put(text.charAt(i), count);
-            } else map.put(text.charAt(i), count);
+            } else map.put(text.charAt(i), 1);
         }
 
         for (Map.Entry<Character, Integer> m : map.entrySet()) {
             System.out.println(m.getKey() + " - " + m.getValue());
-            summ = summ + m.getValue();
         }
-        System.out.println(all + " " + summ);
-        System.out.println(text.charAt(0));
 
+        int minMap = Collections.min(map.values());
+        int maxMap = Collections.max(map.values());
 
+        System.out.println("Min = " + minMap + " Max = " + maxMap);
+
+        }
     }
-}
+
